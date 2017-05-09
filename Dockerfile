@@ -10,7 +10,7 @@ RUN yum -y upgrade && \
 USER jboss
 
 # Set environment
-ENV JBOSS_HOME /opt/jboss/wildfly
+ENV JBOSS_HOME /opt/jboss/wildfly-10.0.0
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
 ENV LIFERAY_VERSION "7.0.2 GA3"
 ENV LIFERAY_VERSION_FULL "7.0-ga3-20160804222206210"
@@ -22,9 +22,8 @@ RUN cd $HOME && \
     sha1sum liferay-ce-portal-wildfly-$LIFERAY_VERSION_FULL.zip | grep $LIFERAY_SHA1 && \
     unzip liferay-ce-portal-wildfly-$LIFERAY_VERSION_FULL.zip > /dev/null && \
     mv liferay-ce-portal-7.0-ga3/* . && \
-    ln -sf wildfly-10.0.0 wildfly && \
     rm -rf liferay-ce-portal-7.0-ga3
 
 EXPOSE 8080 9990
 
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
+CMD ["/opt/jboss/wildfly-10.0.0/bin/standalone.sh", "-b", "0.0.0.0"]
