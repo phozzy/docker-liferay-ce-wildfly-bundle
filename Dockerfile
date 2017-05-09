@@ -22,6 +22,7 @@ RUN cd $HOME && \
     sha1sum liferay-ce-portal-wildfly-$LIFERAY_VERSION_FULL.zip | grep $LIFERAY_SHA1 && \
     unzip liferay-ce-portal-wildfly-$LIFERAY_VERSION_FULL.zip > /dev/null && \
     mv liferay-ce-portal-7.0-ga3/* . && \
+    ln -sf wildfly-10.0.0 wildfly && \
     rm -rf liferay-ce-portal-7.0-ga3
 
 EXPOSE 8080 9990
